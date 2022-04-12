@@ -46,7 +46,7 @@
             <items>
                 <AnchorPane>
                     <children>
-                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Master" textAlignment="CENTER" wrapText="false">
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" textAlignment="CENTER" wrapText="false">
                             <font>
                                 <Font size="18.0" fx:id="x1" />
                             </font>
@@ -54,20 +54,20 @@
                                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
                             </textFill>
                         </Label>
-                  <Label layoutX="74.0" layoutY="29.0" text="Player" />
+                  <Label layoutX="81.0" layoutY="29.0" text="Player" textFill="RED" />
                   <Label layoutX="14.0" layoutY="52.0" text="Name" />
                   <Label layoutX="19.0" layoutY="80.0" text="Age" />
                   <Label layoutX="6.0" layoutY="110.0" text="Weight(kg)" />
                   <TextField fx:id="name" layoutX="69.0" layoutY="48.0" prefHeight="26.0" prefWidth="79.0" />
                   <TextField fx:id="age" layoutX="68.0" layoutY="76.0" prefHeight="26.0" prefWidth="79.0" promptText="Integer" />
-                  <Label layoutX="7.0" layoutY="153.0" text="Batsman" />
+                  <Label layoutX="7.0" layoutY="153.0" text="Batsman" textFill="RED" />
                   <Label layoutX="17.0" layoutY="179.0" text="Runs" />
                   <RadioButton fx:id="batsman_radio_button" layoutX="75.0" layoutY="153.0" mnemonicParsing="false" onAction="#check_1" prefHeight="17.0" prefWidth="13.0" />
                   <TextField fx:id="runs" layoutX="71.0" layoutY="175.0" prefHeight="26.0" prefWidth="86.0" promptText="Integer" />
                   <Label layoutX="5.0" layoutY="211.0" text="Experience" />
                   <TextField fx:id="batsman_experience" layoutX="72.0" layoutY="207.0" prefHeight="26.0" prefWidth="86.0" promptText="Integer" />
                   <Label layoutX="17.0" layoutY="244.0" text="Style" />
-                  <Label layoutX="11.0" layoutY="317.0" text="Bowler" />
+                  <Label layoutX="11.0" layoutY="317.0" text="Bowler" textFill="RED" />
                   <RadioButton fx:id="bowler_radio_button" layoutX="66.0" layoutY="317.0" mnemonicParsing="false" onAction="#check_2" prefHeight="18.0" prefWidth="18.0" />
                   <Label layoutX="8.0" layoutY="351.0" text="Wickets" />
                   <Label layoutX="8.0" layoutY="383.0" prefHeight="17.0" prefWidth="79.0" text="Experience" />
@@ -85,7 +85,7 @@
                     <content>
                         <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
                             <children>
-                                <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+                                <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" textFill="RED" wrapText="false" />
                         <TableView fx:id="table" layoutX="60.0" layoutY="73.0" prefHeight="200.0" prefWidth="294.0">
                           <columns>
                             <TableColumn fx:id="table_name" prefWidth="76.0" text="Name" />
@@ -94,8 +94,8 @@
                               <TableColumn fx:id="table_style" prefWidth="75.0" text="Style" />
                           </columns>
                         </TableView>
-                        <Label layoutX="135.0" layoutY="9.0" prefHeight="54.0" prefWidth="86.0" text="Batsman Stats" />
-                        <Label layoutX="139.0" layoutY="289.0" prefHeight="17.0" prefWidth="87.0" text="Bowler Stats" />
+                        <Label layoutX="135.0" layoutY="9.0" prefHeight="54.0" prefWidth="86.0" text="Batsman Stats" textFill="RED" />
+                        <Label layoutX="139.0" layoutY="289.0" prefHeight="17.0" prefWidth="87.0" text="Bowler Stats" textFill="RED" />
                         <TableView fx:id="table_2" layoutX="60.0" layoutY="322.0" prefHeight="209.0" prefWidth="286.0">
                           <columns>
                             <TableColumn fx:id="table_name_2" prefWidth="75.0" text="Name" />
@@ -110,9 +110,9 @@
                 </ScrollPane>
                 <AnchorPane>
                     <children>
-                        <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+                        <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="RED" wrapText="false" />
                   <TextArea fx:id="details" layoutX="10.0" layoutY="52.0" prefHeight="200.0" prefWidth="200.0" />
-                  <Label layoutX="10.0" layoutY="267.0" prefHeight="17.0" prefWidth="216.0" text="Sort batsman(runs)/bowler(wickets)" />
+                  <Label layoutX="10.0" layoutY="267.0" prefHeight="17.0" prefWidth="216.0" text="Sort batsman(runs)/bowler(wickets)" textFill="RED" />
                   <Button layoutX="10.0" layoutY="471.0" mnemonicParsing="false" onAction="#Sort_Runs" text="Sort batsman" />
                   <TextArea fx:id="sort" layoutX="10.0" layoutY="292.0" prefHeight="167.0" prefWidth="200.0" />
                   <Button layoutX="129.0" layoutY="471.0" mnemonicParsing="false" onAction="#Sort_Wickets" prefHeight="26.0" prefWidth="87.0" text="Sort Bowler" />
