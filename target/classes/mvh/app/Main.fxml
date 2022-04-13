@@ -110,12 +110,16 @@
                 </ScrollPane>
                 <AnchorPane>
                     <children>
-                        <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="RED" wrapText="false" />
-                  <TextArea fx:id="details" layoutX="10.0" layoutY="52.0" prefHeight="200.0" prefWidth="200.0" />
-                  <Label layoutX="10.0" layoutY="267.0" prefHeight="17.0" prefWidth="216.0" text="Sort batsman(runs)/bowler(wickets)" textFill="RED" />
-                  <Button layoutX="10.0" layoutY="471.0" mnemonicParsing="false" onAction="#Sort_Runs" text="Sort batsman" />
-                  <TextArea fx:id="sort" layoutX="10.0" layoutY="292.0" prefHeight="167.0" prefWidth="200.0" />
-                  <Button layoutX="129.0" layoutY="471.0" mnemonicParsing="false" onAction="#Sort_Wickets" prefHeight="26.0" prefWidth="87.0" text="Sort Bowler" />
+                        <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="3.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="RED" wrapText="false" />
+                  <TextArea fx:id="details" layoutX="10.0" layoutY="26.0" prefHeight="200.0" prefWidth="200.0" />
+                  <Label layoutX="5.0" layoutY="238.0" prefHeight="17.0" prefWidth="216.0" text="Sort batsman(runs)/bowler(wickets)" textFill="RED" />
+                  <Button layoutX="10.0" layoutY="438.0" mnemonicParsing="false" onAction="#Sort_Runs" text="Sort batsman" />
+                  <TextArea fx:id="sort" layoutX="10.0" layoutY="262.0" prefHeight="167.0" prefWidth="200.0" />
+                  <Button layoutX="127.0" layoutY="438.0" mnemonicParsing="false" onAction="#Sort_Wickets" prefHeight="26.0" prefWidth="87.0" text="Sort Bowler" />
+                  <Label layoutX="17.0" layoutY="481.0" text="Top Batsman " />
+                  <Label layoutX="24.0" layoutY="520.0" text="Top Bowler" />
+                  <TextField fx:id="top_batsman" layoutX="100.0" layoutY="477.0" prefHeight="23.0" prefWidth="114.0" />
+                  <TextField fx:id="top_bowler" layoutX="100.0" layoutY="516.0" prefHeight="26.0" prefWidth="114.0" />
                     </children>
                 </AnchorPane>
             </items>
