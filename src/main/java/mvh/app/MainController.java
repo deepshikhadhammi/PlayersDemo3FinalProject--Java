@@ -97,6 +97,10 @@ public class MainController implements Initializable {
     private TextField top_batsman;
     @FXML
     private  TextField top_bowler;
+    @FXML
+    private TextField top_runs;
+    @FXML
+    private TextField top_wickets;
     /**
      * Setup the window state
      */
@@ -200,16 +204,11 @@ public class MainController implements Initializable {
                 File file = fc.showOpenDialog(new Stage());
                 if (file.isFile() && file.exists() && file.canRead()) {
                     ArrayList<Player> player_list = Reader.Read(file);
-                    // setting the status
-                    right_status.setTextFill(Color.web("black"));
-                    right_status.setText("File Reading was successful");
-                    left_status.setTextFill(Color.web("black"));
-                    left_status.setText("");
-
                     for (Player player : player_list) {
                         // printing batsman's details
                         if (player instanceof Batsman) {
                             Batsman b1= (Batsman) player;
+
                             name.setText(player.getPlayername());  //batsman's name
                             age.setText(String.valueOf(player.getPlayerage()));  //batsman's age
                             runs.setText(String.valueOf(b1.getRuns()));  //batsman's runs
@@ -218,6 +217,11 @@ public class MainController implements Initializable {
                             batsman_combo.setValue(b1.getPosition()); //player's position
                             batsman_list.add(b1);
                             sort_runs.add(b1);
+                            // setting the status
+                            right_status.setTextFill(Color.web("black"));
+                            right_status.setText("File Reading was successful");
+                            left_status.setTextFill(Color.web("black"));
+                            left_status.setText("");
 
                         }
                         //printing bowler's details
@@ -232,7 +236,6 @@ public class MainController implements Initializable {
                             bowler_combo.setValue(b1.getPosition());
                             bowler_list.add(b1);
                             sort_wickets.add(b1);
-
                         }
 
                     }
@@ -658,6 +661,7 @@ public class MainController implements Initializable {
                 //setting status
                 sort.setText(sort_string);
                 top_batsman.setText(sort_runs.get(sort_runs.size()-1).getName());
+                top_runs.setText(String.valueOf(sort_runs.get(sort_runs.size()-1).getRuns()));
                 right_status.setTextFill(Color.web("black"));
                 right_status.setText("Successfully sorted batsman on basis of runs");
                 left_status.setTextFill(Color.web("black"));
@@ -679,6 +683,7 @@ public class MainController implements Initializable {
                 //setting status
                 sort.setText(sort_string_bowler);
                 top_bowler.setText(sort_wickets.get(sort_wickets.size()-1).getName());
+                top_wickets.setText(String.valueOf(sort_wickets.get(sort_wickets.size()-1).getWickets()));
                 right_status.setTextFill(Color.web("black"));
                 right_status.setText("Successfully  sorted bowlers on basis of wickets");
                 left_status.setTextFill(Color.web("black"));
