@@ -1,16 +1,16 @@
+//DEMO3
+//NAME: DEEPSHIKHA DHAMMI, NAMIT ANEJA
+//DATE: APRIL 12, 2022
+// TUTORIAL: T03, T08
 package mvh.app;
-//Name: NAMIT ANEJA
-//Partner's Name: DEEPSHIKHA DHAMMI
-//Professor: JONATHAN HUDSON
-//Tutorial: T03
-//TA: SARTHAK SHARAN
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class BatsmanTest {
 
-    // tests for toString() function of Batsman
+// tests for toString() function of Batsman
     @Test
     void toString_test1() {
         //creating object for batsman

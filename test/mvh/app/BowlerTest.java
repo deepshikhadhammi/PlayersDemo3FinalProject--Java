@@ -38,7 +38,7 @@ class BowlerTest {
     }
     //tests to compare bowlers wickets
     @Test
-    // test to compare bowler wickets
+        // test to compare bowler wickets
     void test_1_compare_runs() {
         //creating objects for bowler
         Bowler b1=new Bowler("Rohit",32,63,40,23,"Bowler");
