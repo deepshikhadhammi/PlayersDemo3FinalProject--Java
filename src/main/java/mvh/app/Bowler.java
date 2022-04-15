@@ -88,7 +88,7 @@ class highest_wicket_takers implements Comparator<Bowler>
      */
     @Override
     public int compare(Bowler o1, Bowler o2) {
-        return o1.player_wickets - o2.player_wickets;
+        return Integer.compare(o1.player_wickets, o2.player_wickets);
     }
 }
 //Finished

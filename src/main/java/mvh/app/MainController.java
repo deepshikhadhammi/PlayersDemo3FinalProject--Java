@@ -93,6 +93,14 @@ public class MainController implements Initializable {
     private TextArea sort;
     String sort_string ="";
     String sort_string_bowler="";
+    @FXML
+    private TextField top_batsman;
+    @FXML
+    private  TextField top_bowler;
+    @FXML
+    private TextField top_runs;
+    @FXML
+    private TextField top_wickets;
     /**
      * Setup the window state
      */
@@ -105,12 +113,15 @@ public class MainController implements Initializable {
         table_runs.setCellValueFactory(new PropertyValueFactory<Batsman, Integer>("runs"));
         table_experience.setCellValueFactory(new PropertyValueFactory<Batsman, Integer>("experience"));
         table_style.setCellValueFactory(new PropertyValueFactory<Batsman, String>("position"));
+
         table.setItems(batsman_list);
+
         table_name_2.setCellValueFactory(new PropertyValueFactory<Bowler,String>("name"));
         table_wickets.setCellValueFactory(new PropertyValueFactory<Bowler, Integer>("wickets"));
         table_experience_2.setCellValueFactory(new PropertyValueFactory<Bowler, Integer>("experience"));
         table_style_2.setCellValueFactory(new PropertyValueFactory<Bowler, String>("position"));
         table_2.setItems(bowler_list);
+
     }
     // Functions
 
@@ -186,34 +197,47 @@ public class MainController implements Initializable {
         FileChooser fc = new FileChooser();
         if(Main.saved_args.length==0){
             try {
+                batsman_list.clear();
+                bowler_list.clear();
+                sort_runs.clear();
+                sort_wickets.clear();
                 File file = fc.showOpenDialog(new Stage());
                 if (file.isFile() && file.exists() && file.canRead()) {
                     ArrayList<Player> player_list = Reader.Read(file);
-                    // setting the status
-                    right_status.setTextFill(Color.web("black"));
-                    right_status.setText("File Reading was successful");
-                    left_status.setTextFill(Color.web("black"));
-                    left_status.setText("");
-
-                    for (Object player : player_list) {
+                    for (Player player : player_list) {
                         // printing batsman's details
                         if (player instanceof Batsman) {
-                            name.setText(batsman.getName());  //batsman's name
-                            age.setText(String.valueOf(Player.getPlayerage()));  //batsman's age
-                            runs.setText(String.valueOf(batsman.getRuns()));  //batsman's runs
-                            weight.setText(String.valueOf(Player.getPlayerweight())); //batsman's weight
-                            batsman_experience.setText(String.valueOf(batsman.getExperience()));  //batsman's experience
-                            batsman_combo.setValue(batsman.getPosition()); //player's position
+                            Batsman b1= (Batsman) player;
+
+                            name.setText(player.getPlayername());  //batsman's name
+                            age.setText(String.valueOf(player.getPlayerage()));  //batsman's age
+                            runs.setText(String.valueOf(b1.getRuns()));  //batsman's runs
+                            weight.setText(String.valueOf(player.getPlayerweight())); //batsman's weight
+                            batsman_experience.setText(String.valueOf(b1.getExperience()));  //batsman's experience
+                            batsman_combo.setValue(b1.getPosition()); //player's position
+                            batsman_list.add(b1);
+                            sort_runs.add(b1);
+                            // setting the status
+                            right_status.setTextFill(Color.web("black"));
+                            right_status.setText("File Reading was successful");
+                            left_status.setTextFill(Color.web("black"));
+                            left_status.setText("");
+
                         }
                         //printing bowler's details
+
                         if (player instanceof Bowler) {
-                            name.setText(bowler.getName());  //bowler's name
-                            age.setText(String.valueOf(Player.getPlayerage()));  //bowler's age
-                            wickets.setText(String.valueOf(bowler.getWickets()));  //bowler's wickets
-                            weight.setText(String.valueOf(Player.getPlayerweight())); //bowler's weight
-                            bowler_experience.setText(String.valueOf(bowler.getExperience()));  //bowler's experience
-                            bowler_combo.setValue(bowler.getPosition());
+                            Bowler b1=(Bowler) player;
+                            name.setText(player.getPlayername());  //bowler's name
+                            age.setText(String.valueOf(player.getPlayerage()));  //bowler's age
+                            wickets.setText(String.valueOf(b1.getWickets()));  //bowler's wickets
+                            weight.setText(String.valueOf(player.getPlayerweight())); //bowler's weight
+                            bowler_experience.setText(String.valueOf(b1.getExperience()));  //bowler's experience
+                            bowler_combo.setValue(b1.getPosition());
+                            bowler_list.add(b1);
+                            sort_wickets.add(b1);
                         }
+
                     }
                 }
                 else{
@@ -232,6 +256,10 @@ public class MainController implements Initializable {
             File file=new File(Main.saved_args[0]);  //command line
             try{
                 if (file.isFile() && file.exists() && file.canRead()) {
+                    batsman_list.clear();
+                    bowler_list.clear();
+                    sort_runs.clear();
+                    sort_wickets.clear();
                     ArrayList<Player> player_list = Reader.Read(file);   //read the file
                     // setting the status
                     right_status.setTextFill(Color.web("black"));
@@ -241,21 +269,27 @@ public class MainController implements Initializable {
                     for (Object player : player_list) {
                         //printing batsman's details in the text area
                         if (player instanceof Batsman) {
+                            Batsman b1= (Batsman) player;
                             name.setText(batsman.getName());
                             age.setText(String.valueOf(Player.getPlayerage()));
                             runs.setText(String.valueOf(batsman.getRuns()));
                             weight.setText(String.valueOf(Player.getPlayerweight()));
                             batsman_experience.setText(String.valueOf(batsman.getExperience()));
                             batsman_combo.setValue(batsman.getPosition());
+                            batsman_list.add(b1);
+                            sort_runs.add(b1);
                         }
-                        //printng bowler's details in the text area
+                        //printing bowler's details in the text area
                         if (player instanceof Bowler) {
+                            Bowler b1=(Bowler) player;
                             name.setText(bowler.getName());
                             age.setText(String.valueOf(Player.getPlayerage()));
                             wickets.setText(String.valueOf(bowler.getWickets()));
                             weight.setText(String.valueOf(Player.getPlayerweight()));
                             bowler_experience.setText(String.valueOf(bowler.getExperience()));
                             bowler_combo.setValue(bowler.getPosition());
+                            bowler_list.add(b1);
+                            sort_wickets.add(b1);
                         }
                     }
                 }
@@ -302,7 +336,8 @@ public class MainController implements Initializable {
                     left_status.setTextFill(Color.web("black"));
                     left_status.setText("Currently adding batsman");
                     right_status.setTextFill(Color.web("black"));
-                    right_status.setText("");}
+                    right_status.setText("");
+                }
                 else{
                     //setting the status
                     if(batsman_age<0){
@@ -343,14 +378,14 @@ public class MainController implements Initializable {
                     right_status.setTextFill(Color.web("black"));
                     right_status.setText("");
                 }
-               //setting the status
+                //setting the status
                 if (runs.getText() == "") {
                     left_status.setTextFill(Color.web("red"));
                     left_status.setText("Enter the runs of batsman");
                     right_status.setTextFill(Color.web("black"));
                     right_status.setText("");
                 }
-               //setting the status
+                //setting the status
                 if (weight.getText() == "") {
                     left_status.setTextFill(Color.web("red"));
                     left_status.setText("Enter the weight of player");
@@ -433,7 +468,7 @@ public class MainController implements Initializable {
             if(name.getText()!=""&& bowler_experience.getText()!=""&& wickets.getText()!=""&& weight.getText()!=""&&age.getText()!=""){
                 if(bowler_age>=0 && bowler_weight>=0 && bowler_wickets>=0 && experience>=0){
                     Bowler bowler = new Bowler(name.getText(), bowler_age, bowler_weight, bowler_wickets, experience, bowler_combo.getValue());
-                   //adding bowler to the arraylists
+                    //adding bowler to the arraylists
                     player.add(bowler);
                     bowler_list.add(bowler);
                     sort_wickets.add(bowler);
@@ -442,7 +477,8 @@ public class MainController implements Initializable {
                     left_status.setTextFill(Color.web("black"));
                     left_status.setText("Currently adding bowler");
                     right_status.setTextFill(Color.web("black"));
-                    right_status.setText("");}
+                    right_status.setText("");
+                }
                 else{
                     if(bowler_age<0){
                         //setting the status
@@ -618,16 +654,20 @@ public class MainController implements Initializable {
         try {
             //sort batsman on basis of runs
             Collections.sort(sort_runs, new highest_runs());
+
             for (int i = 0; i < sort_runs.size(); i++) {
                 //printing batsman's details in sorted order in the text area
                 sort_string = sort_string + "Player:" + sort_runs.get(i).getName() + "    " + "Runs: " + sort_runs.get(i).getRuns() + "\n";
-               //setting status
+                //setting status
                 sort.setText(sort_string);
+                top_batsman.setText(sort_runs.get(sort_runs.size()-1).getName());
+                top_runs.setText(String.valueOf(sort_runs.get(sort_runs.size()-1).getRuns()));
                 right_status.setTextFill(Color.web("black"));
                 right_status.setText("Successfully sorted batsman on basis of runs");
                 left_status.setTextFill(Color.web("black"));
                 left_status.setText("");
             }
+            sort_string="";
         }
         catch(Exception e1){};
     }
@@ -636,18 +676,21 @@ public class MainController implements Initializable {
         try{
             //sort bowler on basis of wickets
             Collections.sort(sort_wickets, new highest_wicket_takers());
+
             for (int i = 0; i < sort_wickets.size(); i++) {
                 //printing bowler's details in sorted order in the text area
                 sort_string_bowler=sort_string_bowler+"Player:"+sort_wickets.get(i).getName()+"    "+"Wickets: "+sort_wickets.get(i).getWickets()+"\n";
                 //setting status
                 sort.setText(sort_string_bowler);
+                top_bowler.setText(sort_wickets.get(sort_wickets.size()-1).getName());
+                top_wickets.setText(String.valueOf(sort_wickets.get(sort_wickets.size()-1).getWickets()));
                 right_status.setTextFill(Color.web("black"));
                 right_status.setText("Successfully  sorted bowlers on basis of wickets");
                 left_status.setTextFill(Color.web("black"));
                 left_status.setText("");
             }
+            sort_string_bowler="";
         }
         catch(Exception e1){}
     }
 }
-//
