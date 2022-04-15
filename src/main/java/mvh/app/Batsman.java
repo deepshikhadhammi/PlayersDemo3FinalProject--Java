@@ -88,6 +88,7 @@ class highest_runs implements Comparator<Batsman>
      */
     @Override
     public int compare(Batsman b1, Batsman b2) {
-        return b1.player_runs - b2.player_runs;
+        return Integer.compare(b1.player_runs, b2.player_runs);
     }
+
 }

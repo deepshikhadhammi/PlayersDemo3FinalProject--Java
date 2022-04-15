@@ -101,6 +101,8 @@ public class MainController implements Initializable {
     private TextField top_runs;
     @FXML
     private TextField top_wickets;
+    int number_zero=0;
+    int number_1=1;
     /**
      * Setup the window state
      */
@@ -195,7 +197,7 @@ public class MainController implements Initializable {
     @FXML
     void loadAction(ActionEvent event) {
         FileChooser fc = new FileChooser();
-        if(Main.saved_args.length==0){
+        if(Main.saved_args.length==number_zero){
             try {
                 batsman_list.clear();
                 bowler_list.clear();
@@ -236,6 +238,12 @@ public class MainController implements Initializable {
                             bowler_combo.setValue(b1.getPosition());
                             bowler_list.add(b1);
                             sort_wickets.add(b1);
+                            // setting the status
+                            right_status.setTextFill(Color.web("black"));
+                            right_status.setText("File Reading was successful");
+                            left_status.setTextFill(Color.web("black"));
+                            left_status.setText("");
+
                         }
 
                     }
@@ -252,8 +260,8 @@ public class MainController implements Initializable {
             catch(Exception e){
             }
         }
-        else if(Main.saved_args.length==1){
-            File file=new File(Main.saved_args[0]);  //command line
+        else if(Main.saved_args.length==number_1){
+            File file=new File(Main.saved_args[number_zero]);  //command line
             try{
                 if (file.isFile() && file.exists() && file.canRead()) {
                     batsman_list.clear();
@@ -326,7 +334,7 @@ public class MainController implements Initializable {
             int experience = Integer.parseInt(batsman_experience.getText());
 
             if(name.getText()!=""&& batsman_experience.getText()!="" &&runs.getText()!=""&& weight.getText()!=""&&age.getText()!=""){
-                if(batsman_age>=0 && batsman_weight>=0 && batsman_runs>=0 && experience>=0){
+                if(batsman_age>=number_zero && batsman_weight>=number_zero&& batsman_runs>=number_zero&& experience>=number_zero){
                     Batsman batsman = new Batsman(name.getText(), batsman_age, batsman_weight, batsman_runs, experience, batsman_combo.getValue());
                     player.add(batsman);  //add batsman to the player list
                     batsman_list.add(batsman);   //add batsman to arraylist
@@ -340,7 +348,7 @@ public class MainController implements Initializable {
                 }
                 else{
                     //setting the status
-                    if(batsman_age<0){
+                    if(batsman_age<number_zero){
                         left_status.setTextFill(Color.web("red"));
                         left_status.setText("Age should be greater than 0");
                         right_status.setTextFill(Color.web("black"));
@@ -348,7 +356,7 @@ public class MainController implements Initializable {
 
                     }
                     //setting the status
-                    if(batsman_weight<0){
+                    if(batsman_weight<number_zero){
                         left_status.setTextFill(Color.web("red"));
                         left_status.setText("Weight should be greater than 0");
                         right_status.setTextFill(Color.web("black"));
@@ -356,14 +364,14 @@ public class MainController implements Initializable {
 
                     }
                     //setting the status
-                    if(batsman_runs<0){
+                    if(batsman_runs<number_zero){
                         left_status.setTextFill(Color.web("red"));
                         left_status.setText("Runs should be greater than 0");
                         right_status.setTextFill(Color.web("black"));
                         right_status.setText("");
                     }
                     //setting the status
-                    if(experience<0){
+                    if(experience<number_zero){
                         left_status.setTextFill(Color.web("red"));
                         left_status.setText("Experience should be  greater than 0");
                         right_status.setTextFill(Color.web("black"));
@@ -371,7 +379,7 @@ public class MainController implements Initializable {
                     }
                 }}
             else{
-                //setting the sttaus
+                //setting the status
                 if (batsman_experience.getText() == "") {
                     left_status.setTextFill(Color.web("red"));
                     left_status.setText("Enter the experience for batsman");
@@ -466,7 +474,7 @@ public class MainController implements Initializable {
             int bowler_wickets = Integer.parseInt(wickets.getText());
             int experience = Integer.parseInt(bowler_experience.getText());
             if(name.getText()!=""&& bowler_experience.getText()!=""&& wickets.getText()!=""&& weight.getText()!=""&&age.getText()!=""){
-                if(bowler_age>=0 && bowler_weight>=0 && bowler_wickets>=0 && experience>=0){
+                if(bowler_age>=number_zero && bowler_weight>=number_zero && bowler_wickets>=number_zero&& experience>=number_zero){
                     Bowler bowler = new Bowler(name.getText(), bowler_age, bowler_weight, bowler_wickets, experience, bowler_combo.getValue());
                     //adding bowler to the arraylists
                     player.add(bowler);
@@ -480,7 +488,7 @@ public class MainController implements Initializable {
                     right_status.setText("");
                 }
                 else{
-                    if(bowler_age<0){
+                    if(bowler_age<number_zero){
                         //setting the status
                         left_status.setTextFill(Color.web("red"));
                         left_status.setText("Age should be greater than 0");
@@ -488,7 +496,7 @@ public class MainController implements Initializable {
                         right_status.setText("");
 
                     }
-                    if(bowler_age<0){
+                    if(bowler_age<number_zero){
                         //setting the status
                         left_status.setTextFill(Color.web("red"));
                         left_status.setText("Weight should be greater than 0");
@@ -496,14 +504,14 @@ public class MainController implements Initializable {
                         right_status.setText("");
 
                     }
-                    if(bowler_wickets<0){
+                    if(bowler_wickets<number_zero){
                         //setting the status
                         left_status.setTextFill(Color.web("red"));
                         left_status.setText("Wickets should be greater than 0");
                         right_status.setTextFill(Color.web("black"));
                         right_status.setText("");
                     }
-                    if(experience<0){
+                    if(experience<number_zero){
                         //setting the status
                         left_status.setTextFill(Color.web("red"));
                         left_status.setText("Experience should be  greater than 0");
@@ -655,13 +663,13 @@ public class MainController implements Initializable {
             //sort batsman on basis of runs
             Collections.sort(sort_runs, new highest_runs());
 
-            for (int i = 0; i < sort_runs.size(); i++) {
+            for (int i = number_zero; i < sort_runs.size(); i++) {
                 //printing batsman's details in sorted order in the text area
                 sort_string = sort_string + "Player:" + sort_runs.get(i).getName() + "    " + "Runs: " + sort_runs.get(i).getRuns() + "\n";
                 //setting status
                 sort.setText(sort_string);
-                top_batsman.setText(sort_runs.get(sort_runs.size()-1).getName());
-                top_runs.setText(String.valueOf(sort_runs.get(sort_runs.size()-1).getRuns()));
+                top_batsman.setText(sort_runs.get(sort_runs.size()-number_1).getName());
+                top_runs.setText(String.valueOf(sort_runs.get(sort_runs.size()-number_1).getRuns()));
                 right_status.setTextFill(Color.web("black"));
                 right_status.setText("Successfully sorted batsman on basis of runs");
                 left_status.setTextFill(Color.web("black"));
@@ -677,13 +685,13 @@ public class MainController implements Initializable {
             //sort bowler on basis of wickets
             Collections.sort(sort_wickets, new highest_wicket_takers());
 
-            for (int i = 0; i < sort_wickets.size(); i++) {
+            for (int i = number_zero; i < sort_wickets.size(); i++) {
                 //printing bowler's details in sorted order in the text area
                 sort_string_bowler=sort_string_bowler+"Player:"+sort_wickets.get(i).getName()+"    "+"Wickets: "+sort_wickets.get(i).getWickets()+"\n";
                 //setting status
                 sort.setText(sort_string_bowler);
-                top_bowler.setText(sort_wickets.get(sort_wickets.size()-1).getName());
-                top_wickets.setText(String.valueOf(sort_wickets.get(sort_wickets.size()-1).getWickets()));
+                top_bowler.setText(sort_wickets.get(sort_wickets.size()-number_1).getName());
+                top_wickets.setText(String.valueOf(sort_wickets.get(sort_wickets.size()-number_1).getWickets()));
                 right_status.setTextFill(Color.web("black"));
                 right_status.setText("Successfully  sorted bowlers on basis of wickets");
                 left_status.setTextFill(Color.web("black"));

@@ -42,7 +42,7 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+        <SplitPane dividerPositions="0.25, 0.7299554565701559" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <items>
                 <AnchorPane>
                     <children>
@@ -81,9 +81,9 @@
                   <Button layoutX="71.0" layoutY="466.0" mnemonicParsing="false" onAction="#addBowler" text="Add to Team" />
                     </children>
                 </AnchorPane>
-                <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
+                <ScrollPane prefHeight="551.0" prefWidth="383.0">
                     <content>
-                        <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
+                        <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="423.0">
                             <children>
                                 <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" textFill="RED" wrapText="false" />
                         <TableView fx:id="table" layoutX="60.0" layoutY="73.0" prefHeight="200.0" prefWidth="294.0">
@@ -113,13 +113,17 @@
                         <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="3.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="RED" wrapText="false" />
                   <TextArea fx:id="details" layoutX="10.0" layoutY="26.0" prefHeight="200.0" prefWidth="200.0" />
                   <Label layoutX="5.0" layoutY="238.0" prefHeight="17.0" prefWidth="216.0" text="Sort batsman(runs)/bowler(wickets)" textFill="RED" />
-                  <Button layoutX="10.0" layoutY="438.0" mnemonicParsing="false" onAction="#Sort_Runs" text="Sort batsman" />
-                  <TextArea fx:id="sort" layoutX="10.0" layoutY="262.0" prefHeight="167.0" prefWidth="200.0" />
-                  <Button layoutX="127.0" layoutY="438.0" mnemonicParsing="false" onAction="#Sort_Wickets" prefHeight="26.0" prefWidth="87.0" text="Sort Bowler" />
-                  <Label layoutX="17.0" layoutY="481.0" text="Top Batsman " />
-                  <Label layoutX="24.0" layoutY="520.0" text="Top Bowler" />
-                  <TextField fx:id="top_batsman" layoutX="100.0" layoutY="477.0" prefHeight="23.0" prefWidth="114.0" />
-                  <TextField fx:id="top_bowler" layoutX="100.0" layoutY="516.0" prefHeight="26.0" prefWidth="114.0" />
+                  <Button layoutX="10.0" layoutY="349.0" mnemonicParsing="false" onAction="#Sort_Runs" text="Sort batsman" />
+                  <TextArea fx:id="sort" layoutX="10.0" layoutY="262.0" prefHeight="79.0" prefWidth="200.0" />
+                  <Button layoutX="120.0" layoutY="349.0" mnemonicParsing="false" onAction="#Sort_Wickets" prefHeight="26.0" prefWidth="87.0" text="Sort Bowler" />
+                  <Label layoutX="10.0" layoutY="394.0" text="Top Batsman " />
+                  <Label layoutX="17.0" layoutY="477.0" text="Top Bowler" />
+                  <TextField fx:id="top_batsman" layoutX="114.0" layoutY="390.0" prefHeight="26.0" prefWidth="107.0" />
+                  <TextField fx:id="top_bowler" layoutX="113.0" layoutY="473.0" prefHeight="26.0" prefWidth="114.0" />
+                  <TextField fx:id="top_runs" layoutX="114.0" layoutY="427.0" prefHeight="26.0" prefWidth="107.0" />
+                  <Label layoutX="22.0" layoutY="432.0" text="Top Runs" />
+                  <Label layoutX="21.0" layoutY="515.0" text="Top Wickets" />
+                  <TextField fx:id="top_wickets" layoutX="113.0" layoutY="510.0" prefHeight="26.0" prefWidth="114.0" />
                     </children>
                 </AnchorPane>
             </items>
