@@ -168,8 +168,8 @@ public class MainController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("About");
         alert.setHeaderText("About the application");
-        alert.setContentText("Author:Namit And Deepshikha \nVersion:v1.0\n" +
-                "This is a group project on Cricket Team ");
+        alert.setContentText("Author:Namit And Deepshikha \nVersion:v1.0\n" +"Ucalgary id -namit.aneja@ucalgary.ca \n"+"Ucalgary id- deepshikha.dhammi@ucalgary.ca\n"
+                +"This is a group project on Cricket Team ");
         alert.show();
 
     }
